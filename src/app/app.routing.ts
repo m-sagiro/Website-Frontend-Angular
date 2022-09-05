@@ -8,10 +8,12 @@ import { ProfileComponent } from './examples/profile/profile.component';
 import { SignupComponent } from './examples/signup/signup.component';
 import { LandingComponent } from './examples/landing/landing.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
+import {HomepageComponent} from './homepage/homepage/homepage.component';
 
-const routes: Routes =[
+const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home',             component: ComponentsComponent },
+    { path: 'home',             component: HomepageComponent },
+    { path: 'home1',             component: ComponentsComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'signup',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent },
@@ -22,7 +24,7 @@ const routes: Routes =[
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes,{
+    RouterModule.forRoot(routes, {
       useHash: false
     })
   ],

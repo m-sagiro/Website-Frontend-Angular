@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
         // console.log(html);
         // console.log(toggleButton, 'toggle');
 
-        setTimeout(function(){
+        setTimeout(function() {
             toggleButton.classList.add('toggled');
         }, 500);
         html.classList.add('nav-open');
