@@ -24,9 +24,16 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/sass/paper-kit.scss",
               "src/assets/css/demo.css",
-              "src/assets/css/nucleo-icons.css"
+              "src/assets/css/nucleo-icons.css",
+              {
+                "input": "src/assets/css/terminal-effect.css"
+              }
             ],
-            "scripts": [],
+            "scripts": [
+              {
+                "input": "src/assets/js/terminal-effect.js"
+              }
+            ],
             "aot": false,
             "vendorChunk": true,
             "extractLicenses": false,
