@@ -11,7 +11,6 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
-import {HomepageComponent} from './homepage/homepage/homepage.component';
 import {HomepageModule} from './homepage/homepage.module';
 
 

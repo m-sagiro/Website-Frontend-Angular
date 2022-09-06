@@ -1,10 +1,10 @@
 {
-  "name": "paper-kit-2-angular",
-  "version": "1.4.0",
+  "name": "my-own-website",
+  "version": "4.2.0",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/creativetimofficial/pk2-angular.git"
+    "url": "https://github.com/m-sagiro/Website-Frontend-Angular"
   },
   "scripts": {
     "ng": "ng",
