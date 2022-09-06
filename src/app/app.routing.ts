@@ -9,10 +9,12 @@ import { SignupComponent } from './examples/signup/signup.component';
 import { LandingComponent } from './examples/landing/landing.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import {HomepageComponent} from './homepage/homepage/homepage.component';
+import {AboutComponent} from './about/about/about.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home',             component: HomepageComponent },
+    { path: 'about',             component: AboutComponent },
     { path: 'home1',             component: ComponentsComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'signup',           component: SignupComponent },

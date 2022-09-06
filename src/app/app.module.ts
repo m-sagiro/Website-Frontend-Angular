@@ -12,6 +12,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 import {HomepageModule} from './homepage/homepage.module';
+import {AboutModule} from './about/about.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {HomepageModule} from './homepage/homepage.module';
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
-    HomepageModule
+    HomepageModule,
+    AboutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
