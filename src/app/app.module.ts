@@ -13,6 +13,7 @@ import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 import {HomepageModule} from './homepage/homepage.module';
 import {AboutModule} from './about/about.module';
+import {BlogModule} from './blog/blog.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {AboutModule} from './about/about.module';
     ExamplesModule,
     AppRoutingModule,
     HomepageModule,
-    AboutModule
+    AboutModule,
+    BlogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

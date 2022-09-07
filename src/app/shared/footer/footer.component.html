@@ -3,10 +3,10 @@
         <div class="row">
             <nav class="footer-nav">
                 <ul>
-                    <li *ngIf="show"><a routerLink="/home">Homepage</a></li>
-                    <li><a routerLink="/home1">Blog</a></li>
-                    <li><a routerLink="/contact">Contact</a></li>
-                    <li><a routerLink="/about">About me</a></li>
+                    <li *ngIf="showHome"><a routerLink="/home">Homepage</a></li>
+                    <li *ngIf="showBlog"><a routerLink="/blog">Blog</a></li>
+                    <li *ngIf="showContact"><a routerLink="/contact">Contact</a></li>
+                    <li *ngIf="showAbout"><a routerLink="/about">About me</a></li>
                 </ul>
             </nav>
 <!--            <div class="credits ml-auto">-->

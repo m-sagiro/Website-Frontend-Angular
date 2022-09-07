@@ -9,14 +9,20 @@ import {NavigationEnd, Router} from '@angular/router';
 export class FooterComponent implements OnInit {
     test: Date = new Date();
     currentRoute: String;
-    show: boolean;
+    showHome: boolean;
+    showBlog: boolean;
+    showContact: boolean;
+    showAbout: boolean;
 
     constructor(private router: Router) {
         // getting current route
         router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
                 this.currentRoute = event.urlAfterRedirects;
-                this.show = this.currentRoute !== '/home';
+                this.showHome = this.currentRoute !== '/home';
+                this.showBlog = this.currentRoute !== '/blog';
+                this.showContact = this.currentRoute !== '/contact';
+                this.showAbout = this.currentRoute !== '/about';
             }
         });
     }
