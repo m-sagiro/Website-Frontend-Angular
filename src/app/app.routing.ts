@@ -13,6 +13,7 @@ import {AboutComponent} from './about/about/about.component';
 import {BlogComponent} from './blog/blog/blog.component';
 import {BlogViewComponent} from './blog/blog-view/blog-view.component';
 import {ContactComponent} from './contact/contact/contact.component';
+import {LoginComponent} from './login/login/login.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
     { path: 'blog',             component: BlogComponent },
     { path: 'blog/:id',             component: BlogViewComponent },
     { path: 'contact',             component: ContactComponent },
+    { path: 'entry',             component: LoginComponent },
 
     { path: 'home1',             component: ComponentsComponent },
     { path: 'user-profile',     component: ProfileComponent },
