@@ -1,9 +1,9 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "module": "esnext",
     "outDir": "../out-tsc/spec",
-    "module": "commonjs",
-    "target": "es2020",
+    "target": "es5",
     "baseUrl": "",
     "types": [
       "jasmine",

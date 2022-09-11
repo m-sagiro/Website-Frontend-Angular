@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from '../../authentication/authentication.service';
+import {AuthenticationService} from '../../../authentication/authentication.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
     const loginData = new FormData();
     loginData.append('username', this.loginForm.value.username);
     loginData.append('password', this.loginForm.value.password);
-
     this.authenticationService.login(loginData).subscribe(
         data => {
           this.router.navigate(['/home']);

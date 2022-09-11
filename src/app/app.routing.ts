@@ -2,33 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-
-import { ComponentsComponent } from './components/components.component';
-import { ProfileComponent } from './examples/profile/profile.component';
-import { SignupComponent } from './examples/signup/signup.component';
-import { LandingComponent } from './examples/landing/landing.component';
-import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import {HomepageComponent} from './homepage/homepage/homepage.component';
 import {AboutComponent} from './about/about/about.component';
 import {BlogComponent} from './blog/blog/blog.component';
 import {BlogViewComponent} from './blog/blog-view/blog-view.component';
 import {ContactComponent} from './contact/contact/contact.component';
-import {LoginComponent} from './login/login/login.component';
+import {LoginComponent} from './pages/content-pages/login/login.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home',             component: HomepageComponent },
-    { path: 'about',             component: AboutComponent },
-    { path: 'blog',             component: BlogComponent },
+    { path: 'home',             component: HomepageComponent, data: {title: 'Home'}},
+    { path: 'about',             component: AboutComponent, data: {title: 'About'}},
+    { path: 'blog',             component: BlogComponent, data: {title: 'Blog'}},
     { path: 'blog/:id',             component: BlogViewComponent },
-    { path: 'contact',             component: ContactComponent },
-    { path: 'entry',             component: LoginComponent },
+    { path: 'contact',             component: ContactComponent, data: {title: 'Contact'}},
+    { path: 'entry',             component: LoginComponent, data: {title: 'Login'}},
+    // { path: '**', redirectTo: '/error/404' },
 
-    { path: 'home1',             component: ComponentsComponent },
-    { path: 'user-profile',     component: ProfileComponent },
-    { path: 'signup',           component: SignupComponent },
-    { path: 'landing',          component: LandingComponent },
-    { path: 'nucleoicons',      component: NucleoiconsComponent }
+    { path: '', loadChildren: () => import('./pages/content-pages/content-pages.module').then(m => m.ContentPagesModule)},
+
 ];
 
 @NgModule({

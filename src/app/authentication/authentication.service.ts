@@ -17,7 +17,7 @@ export class AuthenticationService {
               private jwtHelper: JwtHelperService) {}
 
   login(loginData) {
-    return this.http.post<TokenInterface>("/api/login", loginData)
+    return this.http.post<TokenInterface>('/api/login', loginData)
         .pipe(
         tap(resp => this.setSession(resp)), shareReplay());
   }
@@ -29,12 +29,12 @@ export class AuthenticationService {
   }
 
   logout() {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
   }
 
   public isLoggedIn() {
-    const accessToken = localStorage.getItem("access_token");
+    const accessToken = localStorage.getItem('access_token');
     return this.jwtHelper.isTokenExpired(accessToken);
   }
 
@@ -43,7 +43,7 @@ export class AuthenticationService {
   }
 
   getExpiration() {
-    const accessToken = localStorage.getItem("access_token");
+    const accessToken = localStorage.getItem('access_token');
     return this.jwtHelper.getTokenExpirationDate(accessToken);
   }
 }

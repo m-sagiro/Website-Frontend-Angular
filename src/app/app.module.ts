@@ -14,12 +14,11 @@ import { ExamplesModule } from './examples/examples.module';
 import {HomepageModule} from './homepage/homepage.module';
 import {AboutModule} from './about/about.module';
 import {BlogModule} from './blog/blog.module';
-import {AuthenticationModule} from './authentication/authentication.module';
-import {LoginModule} from './login/login.module';
 import {ContactModule} from './contact/contact.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthenticationInterceptorComponent} from './authentication/authentication-interceptor/authentication-interceptor.component';
 import {JWT_OPTIONS, JwtHelperService, JwtModule} from '@auth0/angular-jwt';
+import {ContentPagesModule} from './pages/content-pages/content-pages.module';
 
 
 @NgModule({
@@ -41,7 +40,7 @@ import {JWT_OPTIONS, JwtHelperService, JwtModule} from '@auth0/angular-jwt';
     AboutModule,
     BlogModule,
     ContactModule,
-    LoginModule,
+    ContentPagesModule
 
   ],
   providers: [
