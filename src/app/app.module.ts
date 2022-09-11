@@ -14,6 +14,12 @@ import { ExamplesModule } from './examples/examples.module';
 import {HomepageModule} from './homepage/homepage.module';
 import {AboutModule} from './about/about.module';
 import {BlogModule} from './blog/blog.module';
+import {AuthenticationModule} from './authentication/authentication.module';
+import {LoginModule} from './login/login.module';
+import {ContactModule} from './contact/contact.module';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthenticationInterceptorComponent} from './authentication/authentication-interceptor/authentication-interceptor.component';
+import {JWT_OPTIONS, JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -24,6 +30,7 @@ import {BlogModule} from './blog/blog.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     NgbModule,
     FormsModule,
     RouterModule,
@@ -32,9 +39,15 @@ import {BlogModule} from './blog/blog.module';
     AppRoutingModule,
     HomepageModule,
     AboutModule,
-    BlogModule
+    BlogModule,
+    ContactModule,
+    LoginModule,
+
   ],
-  providers: [],
+  providers: [
+      { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptorComponent, multi: true },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
