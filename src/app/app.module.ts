@@ -19,6 +19,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthenticationInterceptorComponent} from './authentication/authentication-interceptor/authentication-interceptor.component';
 import {JWT_OPTIONS, JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import {ContentPagesModule} from './pages/content-pages/content-pages.module';
+import {TestModule} from './test/test.module';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {ContentPagesModule} from './pages/content-pages/content-pages.module';
     AboutModule,
     BlogModule,
     ContactModule,
-    ContentPagesModule
+    ContentPagesModule,
+    TestModule,
 
   ],
   providers: [

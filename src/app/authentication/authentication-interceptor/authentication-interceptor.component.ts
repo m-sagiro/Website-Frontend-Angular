@@ -3,6 +3,7 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest,
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
+import {AuthenticationService} from '../authentication.service';
 
 @Component({
   selector: 'app-authentication-interceptor',
@@ -12,25 +13,37 @@ import {tap} from 'rxjs/operators';
 export class AuthenticationInterceptorComponent implements HttpInterceptor {
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private authenticationService: AuthenticationService) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(
+    // logged in
+    if (this.authenticationService.isLoggedIn()) {
+      // do nothing since logged in
+    } else {
+      // Token refresh needed
+      if (this.authenticationService.sessionAvailable()) {
+        this.authenticationService.refreshToken();
+      }
+    }
+    // add token to header
+    const clonedReq = req.clone({
+      headers: req.headers.set('Authorization', `Bearer ` + localStorage.getItem('access_token')),
+    });
+
+    // handle request with authorization header
+    return next.handle(clonedReq).pipe(
         tap((event: HttpEvent<any>) => {
 
-        },
+            },
             (err: any) => {
-          if (err instanceof HttpErrorResponse) {
-            if (err.status === 401 || err.status === 403) {
-              this.router.navigate(['/entry']);
-            }
-          }
-        })
+              if (err instanceof HttpErrorResponse) {
+                if (err.status === 401 || err.status === 403) {
+                  this.router.navigate(['/entry']);
+                }
+              }
+            })
     );
-
-
-
-    // return next.handle(req);
   }
 }

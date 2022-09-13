@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {shareReplay, tap} from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
 
@@ -22,10 +22,22 @@ export class AuthenticationService {
         tap(resp => this.setSession(resp)), shareReplay());
   }
 
+  refreshToken() {
+    return this.http.post<TokenInterface>('/api/token/refresh', {}, {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('refresh_token')),
+    });
+  }
+
   private setSession(authResult) {
     localStorage.setItem('access_token', authResult.access_token);
     localStorage.setItem('refresh_token', authResult.refresh_token);
     return authResult;
+  }
+
+  sessionAvailable() {
+    const accessToken = localStorage.getItem('access_token');
+    const refreshToken = localStorage.getItem('refresh_token');
+    return !!(accessToken && refreshToken);
   }
 
   logout() {
@@ -34,8 +46,12 @@ export class AuthenticationService {
   }
 
   public isLoggedIn() {
-    const accessToken = localStorage.getItem('access_token');
-    return this.jwtHelper.isTokenExpired(accessToken);
+    if (this.sessionAvailable()) {
+      const accessToken = localStorage.getItem('access_token');
+      return !this.jwtHelper.isTokenExpired(accessToken);
+    } else {
+      return false;
+    }
   }
 
   isLoggedOut() {
@@ -43,7 +59,11 @@ export class AuthenticationService {
   }
 
   getExpiration() {
-    const accessToken = localStorage.getItem('access_token');
-    return this.jwtHelper.getTokenExpirationDate(accessToken);
+    if (this.sessionAvailable()) {
+      const accessToken = localStorage.getItem('access_token');
+      return this.jwtHelper.getTokenExpirationDate(accessToken);
+    } else {
+      return false;
+    }
   }
 }
