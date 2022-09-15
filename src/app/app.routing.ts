@@ -9,6 +9,7 @@ import {BlogViewComponent} from './blog/blog-view/blog-view.component';
 import {ContactComponent} from './contact/contact/contact.component';
 import {LoginComponent} from './pages/content-pages/login/login.component';
 import {TestComponent} from './test/test/test.component';
+import {AuthGuardService} from './authentication/auth-guard.service';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,7 +18,7 @@ const routes: Routes = [
     { path: 'blog',             component: BlogComponent, data: {title: 'Blog'}},
     { path: 'blog/:id',             component: BlogViewComponent },
     { path: 'contact',             component: ContactComponent, data: {title: 'Contact'}},
-    { path: 'entry',             component: LoginComponent, data: {title: 'Login'}},
+    { path: 'entry',             component: LoginComponent, data: {title: 'Login'}, canActivate: [AuthGuardService]},
     { path: 'test',             component: TestComponent, data: {title: 'Test'}},
     // { path: '**', redirectTo: '/error/404' },
 

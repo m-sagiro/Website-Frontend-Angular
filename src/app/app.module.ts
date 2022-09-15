@@ -20,6 +20,7 @@ import {AuthenticationInterceptorComponent} from './authentication/authenticatio
 import {JWT_OPTIONS, JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import {ContentPagesModule} from './pages/content-pages/content-pages.module';
 import {TestModule} from './test/test.module';
+import {AuthGuardService} from './authentication/auth-guard.service';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {TestModule} from './test/test.module';
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptorComponent, multi: true },
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService],
+    JwtHelperService,
+    AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

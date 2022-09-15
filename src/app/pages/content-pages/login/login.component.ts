@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../../authentication/authentication.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -11,6 +11,8 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   focus: any;
   focus1: any;
+  loginFailed: boolean;
+  error: string;
 
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private authenticationService: AuthenticationService,
-              private router: Router) { }
+              private router: Router,
+              private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +35,9 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
         },
         error => {
-          console.log(error['error']);
+          this.loginFailed = true;
+          this.error = error['error']['error'];
+          this.changeDetector.detectChanges();
         }
     );
   }

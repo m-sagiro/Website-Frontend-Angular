@@ -20,7 +20,7 @@ export class AuthenticationInterceptorComponent implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // logged in
     if (this.authenticationService.isLoggedIn()) {
-      // do nothing since logged in
+      // nothing to do since logged in
     } else {
       // Token refresh needed
       if (this.authenticationService.sessionAvailable()) {
