@@ -28,7 +28,7 @@
                                     </div>
                                     <input type="text" formControlName="password" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
                                 </div>
-                                <div *ngIf="loginFailed"
+                                <div *ngIf="existingError"
                                      class="help-block mt-1 text-danger">
                                     <p>
                                         <i class="ft-alert-circle align-middle"></i> {{ error }}

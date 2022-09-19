@@ -2,6 +2,7 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../../authentication/authentication.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   focus: any;
   focus1: any;
-  loginFailed: boolean;
+  existingError: boolean;
   error: string;
 
   loginForm = new FormGroup({
@@ -21,9 +22,14 @@ export class LoginComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService,
               private router: Router,
-              private changeDetector: ChangeDetectorRef) { }
+              private changeDetector: ChangeDetectorRef,
+              private location: Location) { }
 
   ngOnInit(): void {
+    if (this.location.getState()['error']) {
+      this.existingError = true;
+      this.error = this.location.getState()['error'];
+    }
   }
 
   onSubmit() {
@@ -35,7 +41,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
         },
         error => {
-          this.loginFailed = true;
+          this.existingError = true;
           this.error = error['error']['error'];
           this.changeDetector.detectChanges();
         }

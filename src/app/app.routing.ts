@@ -10,6 +10,7 @@ import {ContactComponent} from './contact/contact/contact.component';
 import {LoginComponent} from './pages/content-pages/login/login.component';
 import {TestComponent} from './test/test/test.component';
 import {AuthGuardService} from './authentication/auth-guard.service';
+import {NegateAuthGuardService} from './authentication/negate-auth-guard.service';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },

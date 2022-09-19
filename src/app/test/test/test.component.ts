@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {TestService} from '../test.service';
+import {AuthenticationService} from '../../authentication/authentication.service';
 
 @Component({
   selector: 'app-test',
@@ -9,14 +10,29 @@ import {TestService} from '../test.service';
 })
 export class TestComponent implements OnInit {
 
-  constructor(private testService: TestService) { }
+  constructor(private testService: TestService,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
   getUsers() {
-    this.testService.getAllUsers().subscribe(
+    // this.testService.getAllUsers().subscribe(
+    //     data => {
+    //       console.log(data);
+    //     }
+    // );
+    this.authenticationService.refreshToken(localStorage.getItem('refresh_token')).subscribe(
         data => {
+          console.log(data);
+        }
+    );
+  }
+
+  getGet() {
+    this.authenticationService.refreshToken(localStorage.getItem('refresh_token')).subscribe(
+        data => {
+          console.log('click');
           console.log(data);
         }
     );

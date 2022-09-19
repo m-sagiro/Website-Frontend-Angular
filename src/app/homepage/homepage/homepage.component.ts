@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Location} from '@angular/common';
 
 declare function consoleText(words: string, id: string, colors: string): any;
 
