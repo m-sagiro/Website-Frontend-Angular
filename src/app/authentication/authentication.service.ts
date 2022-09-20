@@ -25,7 +25,6 @@ export class AuthenticationService {
   }
 
   refreshToken(token: string) {
-    console.log(token);
     return this.http.get<TokenInterface>('/api/token/refresh', {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + token})
     })
@@ -34,7 +33,6 @@ export class AuthenticationService {
   }
 
   private setSession(authResult) {
-    console.log('Session set');
     localStorage.setItem('access_token', authResult.access_token);
     localStorage.setItem('refresh_token', authResult.refresh_token);
     return authResult;
