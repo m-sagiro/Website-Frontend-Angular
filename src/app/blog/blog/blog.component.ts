@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {BlogService, BlogSet} from '../blog.service';
+import {Blog, BlogService} from '../blog.service';
 
 @Component({
   selector: 'app-blog',
@@ -10,25 +9,24 @@ import {BlogService, BlogSet} from '../blog.service';
 })
 export class BlogComponent implements OnInit {
   public error: string;
-  public blogSet: BlogSet;
+  public isError: boolean;
+  public blogSet: Blog[];
 
-  constructor(private blogService: BlogService,
-              private router: Router) { }
+  constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
-    this.blogService.getAllBlogs().subscribe(
-        (data) => {
-            // this.blogSet = data;
-            // alert(this.blogSet);
-            // console.log(this.blogSet);
-            console.log(data);
-        },
-        error => {
-            console.log(error);
-          // this.error = error['error']['error'];
-          // this.router.navigate(['/entry'], {state: {'error': this.error}});
-        }
-    );
+      this.isError = false;
+      this.blogService.getAllBlogs().subscribe(
+          (data) => {
+              for (const blog of data) {
+                  blog.blogUrl = '/blog/' + blog.id;
+              }
+              this.blogSet = data;
+              },
+              error => {
+              this.isError = true;
+              this.error = error['error'];
+          }
+          );
   }
-
 }

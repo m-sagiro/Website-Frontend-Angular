@@ -8,10 +8,7 @@ export interface Blog {
   subTitle: string;
   text: string;
   postDate: any;
-}
-
-export interface BlogSet {
-  blogs: Blog[];
+  blogUrl: string;
 }
 
 @Injectable({
@@ -24,7 +21,7 @@ export class BlogService {
               private router: Router) { }
 
   getAllBlogs() {
-    return this.http.get<BlogSet>('/api/blogs');
+    return this.http.get<Blog[]>('/api/blogs');
   }
 
   getBlogById(id: number) {
