@@ -7,7 +7,6 @@ import {NavigationEnd, Router} from '@angular/router';
     styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-    test: Date = new Date();
     currentRoute: String;
     showHome: boolean;
     showBlog: boolean;

@@ -8,7 +8,6 @@ export interface Blog {
   subTitle: string;
   text: string;
   postDate: any;
-  blogUrl: string;
 }
 
 @Injectable({

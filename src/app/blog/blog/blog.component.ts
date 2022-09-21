@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
 import {Blog, BlogService} from '../blog.service';
+import {AuthenticationService} from '../../authentication/authentication.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {BlogNewComponent} from '../blog-new/blog-new.component';
 
 @Component({
   selector: 'app-blog',
@@ -8,19 +10,18 @@ import {Blog, BlogService} from '../blog.service';
   styleUrls: ['./blog.component.css']
 })
 export class BlogComponent implements OnInit {
-  public error: string;
-  public isError: boolean;
-  public blogSet: Blog[];
+    public error: string;
+    public isError: boolean;
+    public blogSet: Blog[];
 
-  constructor(private blogService: BlogService) { }
+    constructor(private blogService: BlogService,
+              public auth: AuthenticationService,
+              private modalService: NgbModal) { }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
       this.isError = false;
       this.blogService.getAllBlogs().subscribe(
           (data) => {
-              for (const blog of data) {
-                  blog.blogUrl = '/blog/' + blog.id;
-              }
               this.blogSet = data;
               },
               error => {
@@ -28,5 +29,10 @@ export class BlogComponent implements OnInit {
               this.error = error['error'];
           }
           );
-  }
+    }
+
+    open() {
+        const modalRef = this.modalService.open(BlogNewComponent);
+        // modalRef.componentInstance.name = 'World';
+    }
 }

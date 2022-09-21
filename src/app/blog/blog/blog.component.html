@@ -1,10 +1,13 @@
 <div class="wrapper">
     <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/fabio-mangione.jpg');">
         <div class="filter"></div>
-        <div class="motto">
-            <h2 class="title-uppercase text-center">
+        <div class="motto text-center">
+            <h2 class="title-uppercase">
                 Blog
             </h2>
+            <div *ngIf="auth.isLoggedIn()">
+                <p><a (click)="open()" class="text-success">New</a></p>
+            </div>
         </div>
     </div>
     <div class="section">
@@ -15,7 +18,7 @@
                     <div *ngFor="let blog of this.blogSet">
 
                         <div class="shadow p-3 mb-5 bg-white rounded">
-                            <a [routerLink]=[blog.blogUrl]>
+                            <a [routerLink]="['/blog/', blog.id]">
                                 <h2 class="mt-0 text-dark"><strong>{{blog.title}}</strong></h2>
                                 <h3 class="mt-0 text-secondary">{{blog.subTitle}}</h3>
                             </a>

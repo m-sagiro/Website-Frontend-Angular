@@ -21,8 +21,8 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/sass/paper-kit.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/css/demo.css",
               "src/assets/css/nucleo-icons.css",
               {
@@ -89,8 +89,8 @@
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/sass/paper-kit.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/css/demo.css",
               "src/assets/css/nucleo-icons.css"
             ],
