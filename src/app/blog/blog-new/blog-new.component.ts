@@ -4,9 +4,10 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-blog-new',
   templateUrl: './blog-new.component.html',
-  styleUrls: ['./blog-new.component.css']
 })
 export class BlogNewComponent implements OnInit {
+  focus: any;
+  focus1: any;
 
   constructor(public activeModal: NgbActiveModal) { }
 

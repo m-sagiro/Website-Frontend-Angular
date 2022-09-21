@@ -29,7 +29,7 @@
     "@auth0/angular-jwt": "5.0.2",
     "@ng-bootstrap/ng-bootstrap": "13.0.0",
     "@popperjs/core": "^2.11.6",
-    "bootstrap": "4.5.3",
+    "bootstrap": "5.2.1",
     "core-js": "3.25.2",
     "jquery": "3.6.1",
     "jw-bootstrap-switch-ng2": "2.0.5",
