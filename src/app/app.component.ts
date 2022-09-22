@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
         private element: ElementRef, public location: Location,
                  ) {}
     ngOnInit() {
+        let rv;
+        const ua = window.navigator.userAgent;
         const version = parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
         const navbar: HTMLElement = this.element.nativeElement.children[0].children[0];
         // this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
@@ -47,11 +49,10 @@ export class AppComponent implements OnInit {
                 navbar.classList.add('navbar-transparent');
             }
         });
-        var ua = window.navigator.userAgent;
         const trident = ua.indexOf('Trident/');
         if (trident > 0) {
             // IE 11 => return version number
-            var rv = ua.indexOf('rv:');
+            rv = ua.indexOf('rv:');
         }
         if (version) {
             const body = document.getElementsByTagName('body')[0];

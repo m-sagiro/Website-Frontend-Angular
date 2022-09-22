@@ -16,18 +16,14 @@
                             <div class="col-md-6">
                                 <label>Name</label>
                                 <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
-                                    </div>
+                                    <span class="input-group-text bg-white"><i class="nc-icon nc-single-02"></i></span>
                                     <input type="text" class="form-control" placeholder="Name" (focus)="focus=true" (blur)="focus=false" >
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label>Email</label>
                                 <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">  <i class="nc-icon nc-email-85"></i></span>
-                                    </div>
+                                    <span class="input-group-text bg-white">  <i class="nc-icon nc-email-85"></i></span>
                                     <input type="text" class="form-control" placeholder="Email" (focus)="focus1=true" (blur)="focus1=false" >
                                 </div>
                             </div>
@@ -35,7 +31,7 @@
                         <label>Message</label>
                         <textarea class="form-control" rows="4" placeholder="Tell me your thoughts and feelings..."></textarea>
                         <div class="row">
-                            <div class="col-md-4 mr-auto ml-auto text-center">
+                            <div class="col-md-4 me-auto ms-auto text-center">
                                 <button class="btn btn-danger btn-lg btn-fill">Send Message</button>
                             </div>
                         </div>

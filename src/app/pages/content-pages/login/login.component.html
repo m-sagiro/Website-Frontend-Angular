@@ -16,16 +16,12 @@
                             <div class="col-md-6 mr-auto ml-auto mx-auto text-center">
                                 <label>Username</label>
                                 <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
-                                    </div>
+                                    <span class="input-group-text bg-white"><i class="nc-icon nc-single-02"></i></span>
                                     <input type="text" formControlName="username" class="form-control" placeholder="Username" (focus)="focus=true" (blur)="focus=false" >
                                 </div>
                                 <label>Password</label>
                                 <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">  <i class="nc-icon nc-key-25"></i></span>
-                                    </div>
+                                    <span class="input-group-text bg-white">  <i class="nc-icon nc-key-25"></i></span>
                                     <input type="password" formControlName="password" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
                                 </div>
                                 <div *ngIf="existingError"
@@ -37,7 +33,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 mr-auto ml-auto text-center">
+                            <div class="col-md-4 me-auto ms-auto text-center">
                                 <button class="btn btn-danger btn-lg btn-fill" (click)="onSubmit()">Login</button>
                             </div>
                         </div>
