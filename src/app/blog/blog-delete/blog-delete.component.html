@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Blog deletion</h4>
+    <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <p><strong>Are you sure you want to delete this<span class="text-primary">Blog</span>?</strong></p>
+    <p>All information will be deleted permanently!
+        <span class="text-danger">This operation can not be undone.</span>
+    </p>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+    <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Delete</button>
+</div>

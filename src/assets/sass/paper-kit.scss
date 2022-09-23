@@ -2,8 +2,12 @@
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
 
+
 /* make changes to the !default Bootstrap variables */
-$headings-font-weight: 100 !important;
+$headings-font-weight: lighter !important;
+$font-family-base: "Montserrat", "Helvetica", Arial, sans-serif !important;
+
+
 
 /* finally, import Bootstrap to set the changes! */
 @import "node_modules/bootstrap/scss/bootstrap";
@@ -41,7 +45,7 @@ $headings-font-weight: 100 !important;
 @import "paper-kit/tabs-navs-pagination";
 @import "paper-kit/collapse";
 @import "paper-kit/carousel";
-@import "paper-kit/modal";
+//@import "paper-kit/modal";
 //
 @import "paper-kit/responsive";
 @import "paper-kit/plugins/datetimepicker";

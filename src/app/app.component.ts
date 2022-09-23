@@ -4,6 +4,7 @@ import { Subscription, pipe, filter } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import {AuthenticationService} from './authentication/authentication.service';
 
 @Component({
     selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
 
     constructor(
         private renderer: Renderer2, private router: Router, @Inject(DOCUMENT, ) private document: any,
-        private element: ElementRef, public location: Location,
+        private element: ElementRef, public location: Location, private auth: AuthenticationService,
                  ) {}
     ngOnInit() {
         let rv;
@@ -58,6 +59,10 @@ export class AppComponent implements OnInit {
             const body = document.getElementsByTagName('body')[0];
             body.classList.add('ie-background');
 
+        }
+        if (this.auth.isTokenExpired()) {
+            const refreshToken = localStorage.getItem('refresh_token');
+            this.auth.refreshToken(refreshToken).subscribe();
         }
 
     }
