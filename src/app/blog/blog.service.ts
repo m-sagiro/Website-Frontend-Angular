@@ -32,10 +32,10 @@ export class BlogService {
   }
 
   deleteBlogById(id: number) {
-    return this.http.delete<Blog>(`/api/blog/delete/${id}`);
+    return this.http.delete(`/api/blog/delete/${id}`);
   }
 
-  updateBlog(id: number, blogData) {
-    return this.http.put<Blog>(`/api/blog/update/${id}`, blogData);
+  updateBlog(blogData) {
+    return this.http.put<Blog>(`/api/blog/update`, blogData);
   }
 }

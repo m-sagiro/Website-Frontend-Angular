@@ -32,7 +32,7 @@ export class AuthenticationInterceptorComponent implements HttpInterceptor {
       }
       return next.handle(authReq).pipe(
           catchError(error => {
-              if (error instanceof HttpErrorResponse && error.status === 403) {
+              if (error instanceof HttpErrorResponse && error.status === 403 && this.authenticationService.isTokenExpired()) {
                   return this.handleError(authReq, next);
               }
               return throwError(error);

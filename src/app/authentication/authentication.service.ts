@@ -70,4 +70,13 @@ export class AuthenticationService {
       return true;
     }
   }
+
+  isRefreshtokenExpired() {
+    if (this.sessionAvailable()) {
+      const refreshToken = localStorage.getItem('refresh_token');
+      return this.jwtHelper.isTokenExpired(refreshToken);
+    } else {
+      return true;
+    }
+  }
 }

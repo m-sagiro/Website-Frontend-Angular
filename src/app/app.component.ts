@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
             body.classList.add('ie-background');
 
         }
-        if (this.auth.isTokenExpired()) {
+        if (this.auth.isTokenExpired() && !this.auth.isRefreshtokenExpired()) {
             const refreshToken = localStorage.getItem('refresh_token');
             this.auth.refreshToken(refreshToken).subscribe();
         }

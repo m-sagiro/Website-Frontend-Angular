@@ -16,8 +16,8 @@ export class BlogComponent implements OnInit {
     public blogSet: Blog[];
 
     constructor(private blogService: BlogService,
-              public auth: AuthenticationService,
-              private modalService: NgbModal,
+                public auth: AuthenticationService,
+                private modalService: NgbModal,
                 config: NgbModalConfig) {
         config.backdrop = 'static';
         config.keyboard = false;
