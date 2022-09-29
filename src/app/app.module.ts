@@ -22,6 +22,8 @@ import {ContentPagesModule} from './pages/content-pages/content-pages.module';
 import {TestModule} from './test/test.module';
 import {AuthGuardService} from './authentication/auth-guard.service';
 import {NegateAuthGuardService} from './authentication/negate-auth-guard.service';
+import {RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings} from 'ng-recaptcha';
+import {environment} from '../environments/environment';
 
 
 @NgModule({
@@ -52,7 +54,10 @@ import {NegateAuthGuardService} from './authentication/negate-auth-guard.service
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
     AuthGuardService,
-    NegateAuthGuardService],
+    NegateAuthGuardService,
+    {provide: RECAPTCHA_SETTINGS, useValue: { siteKey: environment.recaptcha.siteKey} as RecaptchaSettings,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

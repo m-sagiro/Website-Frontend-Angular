@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
 
 export interface Blog {
   id: number;
@@ -16,8 +15,7 @@ export interface Blog {
 
 export class BlogService {
 
-  constructor(private http: HttpClient,
-              private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   getAllBlogs() {
     return this.http.get<Blog[]>('/api/blogs');

@@ -10,29 +10,69 @@
     <div class="section">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 mr-auto ml-auto mx-auto">
-                    <form class="contact-form">
+                <div class="col-md-8 ms-auto me-auto mx-auto text-center">
+                    <div class="text-info" [hidden]="!formSubmitted">
+                        <h4>I received your message!</h4>
+                    </div>
+                    <form [formGroup]="contactForm" class="contact-form" [hidden]="formSubmitted">
                         <div class="row">
+
                             <div class="col-md-6">
                                 <label>Name</label>
                                 <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
                                     <span class="input-group-text bg-white"><i class="nc-icon nc-single-02"></i></span>
-                                    <input type="text" class="form-control" placeholder="Name" (focus)="focus=true" (blur)="focus=false" >
+                                    <input type="text" id="name" formControlName="name" class="form-control" placeholder="Name" (focus)="focus=true" (blur)="focus=false" required>
+                                    <div *ngIf="name.invalid && (name.dirty || name.touched) || formSubmitAttempt" class="form-control-feedback">
+                                        <div *ngIf="name.errors?.['required']">
+                                            Name is required.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <label>Email</label>
                                 <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
                                     <span class="input-group-text bg-white">  <i class="nc-icon nc-email-85"></i></span>
-                                    <input type="text" class="form-control" placeholder="Email" (focus)="focus1=true" (blur)="focus1=false" >
+                                    <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email" (focus)="focus1=true" (blur)="focus1=false" required>
+                                    <div *ngIf="email.invalid && (email.dirty || email.touched) || formSubmitAttempt" class="form-control-feedback">
+                                        <div *ngIf="email.errors?.['required']">
+                                            Email is required.
+                                        </div>
+                                        <div *ngIf="email.errors?.['email']">
+                                            Enter valid email
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <label>Message</label>
-                        <textarea class="form-control" rows="4" placeholder="Tell me your thoughts and feelings..."></textarea>
+                        <div class="input-group" style="border-width: 1px !important;" [ngClass]="{'input-group-focus':focus1===true}">
+                            <textarea class="form-control" id="text" formControlName="text" rows="4" placeholder="Tell me your thoughts and feelings..." required></textarea>
+                            <div *ngIf="text.invalid && (text.dirty || text.touched) || formSubmitAttempt" class="form-control-feedback">
+                                <div *ngIf="text.errors?.['required']">
+                                    Let me hear from you
+                                </div>
+                            </div>
+                        </div>
+
+                        <label> Validate reCAPTCHA</label>
+                        <div class="row text-center">
+                            <re-captcha id="recaptcha" formControlName="recaptcha" required></re-captcha>
+                        </div>
+                        <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched) || formSubmitAttempt" class="form-control-feedback text-danger text-start">
+                            <div *ngIf="recaptcha.errors?.['required']">
+                                Tell you're not a robot =D
+                            </div>
+                        </div>
+
                         <div class="row">
+                            <div *ngIf="contactForm.errors" class="form-control-feedback text-danger">
+                                {{ contactForm.errors?.['error'] }}
+                            </div>
                             <div class="col-md-4 me-auto ms-auto text-center">
-                                <button class="btn btn-danger btn-lg btn-fill">Send Message</button>
+                                <button class="btn btn-danger btn-lg btn-fill" (click)="onSubmit()" [disabled]="formValidAttempt">Send Message</button>
                             </div>
                         </div>
                     </form>
