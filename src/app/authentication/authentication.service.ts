@@ -19,9 +19,7 @@ export class AuthenticationService {
               private cookie: CookieService) {}
 
   login(loginData) {
-    return this.http.post<TokenInterface>('/api/login', loginData)
-        .pipe(
-        tap(resp => this.setSession(resp)), shareReplay());
+    return this.http.post<TokenInterface>('/api/login', loginData);
   }
 
   refreshToken(token: string) {
@@ -32,7 +30,7 @@ export class AuthenticationService {
         tap(resp => this.setSession(resp)), shareReplay());
   }
 
-  private setSession(authResult) {
+  setSession(authResult) {
     localStorage.setItem('access_token', authResult.access_token);
     localStorage.setItem('refresh_token', authResult.refresh_token);
     return authResult;

@@ -24,14 +24,7 @@ export class AppComponent implements OnInit {
         const ua = window.navigator.userAgent;
         const version = parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
         const navbar: HTMLElement = this.element.nativeElement.children[0].children[0];
-        // this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
-        //     if (window.outerWidth > 991) {
-        //         window.document.children[0].scrollTop = 0;
-        //     }else{
-        //         window.document.activeElement.scrollTop = 0;
-        //     }
-        //     this.navbar.sidebarClose();
-        // });
+
         this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
             if (window.outerWidth > 991) {
                 window.document.children[0].scrollTop = 0;

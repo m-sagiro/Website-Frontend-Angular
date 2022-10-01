@@ -7,22 +7,14 @@ import {AboutComponent} from './about/about/about.component';
 import {BlogComponent} from './blog/blog/blog.component';
 import {BlogViewComponent} from './blog/blog-view/blog-view.component';
 import {ContactComponent} from './contact/contact/contact.component';
-import {LoginComponent} from './pages/content-pages/login/login.component';
-import {TestComponent} from './test/test/test.component';
-import {AuthGuardService} from './authentication/auth-guard.service';
-import {BlogNewComponent} from './blog/blog-new/blog-new.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home',             component: HomepageComponent, data: {title: 'Home'}},
     { path: 'about',             component: AboutComponent, data: {title: 'About'}},
     { path: 'blog',             component: BlogComponent, data: {title: 'Blog'}},
-    { path: 'blog/new',             component: BlogNewComponent, data: {title: 'New Blog'} },
     { path: 'blog/:id',             component: BlogViewComponent, data: {title: 'Blog'} },
     { path: 'contact',             component: ContactComponent, data: {title: 'Contact'}},
-    { path: 'entry',             component: LoginComponent, data: {title: 'Login'}, canActivate: [AuthGuardService]},
-    { path: 'test',             component: TestComponent, data: {title: 'Test'}},
-    // { path: '**', redirectTo: '/error/404' },
 
     { path: '', loadChildren: () => import('./pages/content-pages/content-pages.module').then(m => m.ContentPagesModule)},
 

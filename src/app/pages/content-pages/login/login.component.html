@@ -24,8 +24,7 @@
                                     <span class="input-group-text bg-white">  <i class="nc-icon nc-key-25"></i></span>
                                     <input type="password" formControlName="password" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
                                 </div>
-                                <div *ngIf="existingError"
-                                     class="help-block mt-1 text-danger">
+                                <div *ngIf="existingError" class="help-block mt-1 text-danger">
                                     <p>
                                         <i class="ft-alert-circle align-middle"></i> {{ error }}
                                     </p>
@@ -34,7 +33,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 me-auto ms-auto text-center">
-                                <button class="btn btn-danger btn-lg btn-fill" (click)="onSubmit()">Login</button>
+                                <button class="btn btn-danger btn-lg btn-fill" (click)="onSubmit()" [disabled]="submitAttempt">Login</button>
                             </div>
                         </div>
                     </form>

@@ -3,6 +3,7 @@ import {AuthenticationService} from '../../../authentication/authentication.serv
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {shareReplay, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   focus1: any;
   existingError: boolean;
   error: string;
+  submitAttempt: boolean;
 
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -22,10 +24,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService,
               private router: Router,
-              private changeDetector: ChangeDetectorRef,
               private location: Location) { }
 
   ngOnInit(): void {
+    this.submitAttempt = false;
+    this.existingError = false;
     if (this.location.getState()['error']) {
       this.existingError = true;
       this.error = this.location.getState()['error'];
@@ -36,14 +39,18 @@ export class LoginComponent implements OnInit {
     const loginData = new FormData();
     loginData.append('username', this.loginForm.value.username);
     loginData.append('password', this.loginForm.value.password);
+
+    this.submitAttempt = true;
+
     this.authenticationService.login(loginData).subscribe(
         data => {
+          this.authenticationService.setSession(data);
           this.router.navigate(['/home']);
         },
         error => {
+          this.submitAttempt = false;
           this.existingError = true;
           this.error = error['error']['error'];
-          this.changeDetector.detectChanges();
         }
     );
   }
