@@ -21,6 +21,7 @@ import {AuthGuardService} from './authentication/auth-guard.service';
 import {NegateAuthGuardService} from './authentication/negate-auth-guard.service';
 import {RECAPTCHA_SETTINGS, RecaptchaSettings} from 'ng-recaptcha';
 import {environment} from '../environments/environment';
+import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {environment} from '../environments/environment';
 
   ],
   providers: [
-      { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptorComponent, multi: true },
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptorComponent, multi: true },
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
     AuthGuardService,

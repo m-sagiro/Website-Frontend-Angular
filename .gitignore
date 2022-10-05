@@ -4,8 +4,11 @@
 /dist
 /tmp
 /out-tsc
+/target
+/.angular
 
 # dependencies
+/node
 /node_modules
 package-lock.json
 
@@ -44,3 +47,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
