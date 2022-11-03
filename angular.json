@@ -11,6 +11,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "froala-editor"
+            ],
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -25,6 +28,8 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/css/demo.css",
               "src/assets/css/nucleo-icons.css",
+              "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
+              "./node_modules/froala-editor/css/froala_style.min.css",
               {
                 "input": "src/assets/css/terminal-effect.css"
               }
@@ -32,7 +37,8 @@
             "scripts": [
               {
                 "input": "src/assets/js/terminal-effect.js"
-              }
+              },
+              "node_modules/froala-editor/js/froala_editor.pkgd.min.js"
             ],
             "aot": false,
             "vendorChunk": true,
@@ -92,7 +98,9 @@
               "src/assets/sass/paper-kit.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/css/demo.css",
-              "src/assets/css/nucleo-icons.css"
+              "src/assets/css/nucleo-icons.css",
+              "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
+              "./node_modules/froala-editor/css/froala_style.min.css"
             ],
             "assets": [
               "src/assets",

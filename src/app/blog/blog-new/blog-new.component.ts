@@ -3,7 +3,6 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DatePipe} from '@angular/common';
 import {BlogService} from '../blog.service';
-import {BlogComponent} from '../blog/blog.component';
 
 @Component({
   selector: 'app-blog-new',
@@ -14,6 +13,11 @@ export class BlogNewComponent implements OnInit {
   focus1: any;
   isError: boolean;
   error: string;
+  public options: Object = {
+    placeholderText: 'Be creative =D',
+    charCounterCount: true,
+    emoticonsUseImage: false
+  };
 
   blogForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
