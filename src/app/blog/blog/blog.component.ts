@@ -21,6 +21,7 @@ export class BlogComponent implements OnInit {
                 config: NgbModalConfig) {
         config.backdrop = 'static';
         config.keyboard = false;
+        config.size = 'xl';
     }
 
     ngOnInit(): void {

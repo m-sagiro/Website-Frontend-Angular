@@ -16,6 +16,7 @@ export class BlogViewComponent implements OnInit {
   public error: string;
   public isError: boolean;
   public blog: Blog;
+  public editorContent;
 
   constructor(private activatedRoute: ActivatedRoute,
               private blogService: BlogService,
@@ -24,6 +25,7 @@ export class BlogViewComponent implements OnInit {
               config: NgbModalConfig) {
       config.backdrop = 'static';
       config.keyboard = false;
+      config.size = 'xl';
   }
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class BlogViewComponent implements OnInit {
           data => {
               this.isError = false;
               this.blog = data;
+              this.editorContent = data.text;
               },
               error => {
               this.isError = true;

@@ -7,6 +7,7 @@ import { BlogNewComponent } from './blog-new/blog-new.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { BlogDeleteComponent } from './blog-delete/blog-delete.component';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
+import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 
 
 
@@ -15,7 +16,9 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
     imports: [
         CommonModule,
         RouterModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FroalaEditorModule,
+        FroalaViewModule
     ]
 })
 export class BlogModule { }

@@ -23,8 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 mr-auto ml-auto mx-auto">
-<!--                    <h2 class="mt-0 text-dark"><strong>  </strong></h2>-->
-                    <h4 *ngIf="isError === false" class="text-secondary">{{ blog.text }}</h4>
+                    <div *ngIf="isError === false" [froalaView]="editorContent"></div>
                     <div *ngIf="isError" class="text-center">
                         <p class="text-danger">
                             {{error}}
