@@ -28,6 +28,7 @@
     "@auth0/angular-jwt": "5.0.2",
     "@ng-bootstrap/ng-bootstrap": "13.0.0",
     "@popperjs/core": "^2.11.6",
+    "angular-froala-wysiwyg": "^4.0.15",
     "bootstrap": "5.2.1",
     "core-js": "3.25.2",
     "jquery": "3.6.1",

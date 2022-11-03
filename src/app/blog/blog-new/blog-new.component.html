@@ -18,8 +18,9 @@
                 </div>
                 <label>Text</label>
                 <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
-                    <span class="input-group-text bg-white">  <i class="nc-icon nc-caps-small"></i></span>
-                    <textarea class="form-control" formControlName="text" rows="4" placeholder="Tell us your thoughts" (focus)="focus1=true" (blur)="focus1=false"></textarea>
+<!--                    <span class="input-group-text bg-white">  <i class="nc-icon nc-caps-small"></i></span>-->
+<!--                    <textarea class="form-control" formControlName="text" rows="4" placeholder="Tell us your thoughts" (focus)="focus1=true" (blur)="focus1=false"></textarea>-->
+                    <div [froalaEditor]="options" formControlName="text"></div>
                 </div>
                 <label>Date</label>
                 <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
