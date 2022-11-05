@@ -1,9 +1,9 @@
 <div class="wrapper">
     <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/fabio-mangione.jpg');">
         <div class="filter"></div>
-        <div class="motto text-center">
+        <div class="motto text-center pt-5">
             <div class="row">
-                <div class="col-md-10 mr-auto ml-auto mx-auto">
+                <div class="col-md-10 ms-auto me-auto mx-auto">
                     <h2 *ngIf="isError === false" class="title-uppercase">
                         {{ blog.title }}
                     </h2>
@@ -21,6 +21,11 @@
     </div>
     <div class="section">
         <div class="container">
+            <div class="row pb-5">
+                <div class="col-6 ms-0 text-start">
+                    <a class="fw-bold text-dark" routerLink="/blog">Back</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-10 mr-auto ml-auto mx-auto">
                     <div *ngIf="isError === false" [froalaView]="editorContent"></div>
@@ -32,14 +37,7 @@
                 </div>
 
             </div>
-            <div class="row space-top">
-                <div class="col-6 ms-auto text-start">
-                    <a class="fw-bold" routerLink="/blog">Previous</a>
-                </div>
-                <div class="col-6 me-auto text-end">
-                    <a class="fw-bold" routerLink="/blog">Next</a>
-                </div>
-            </div>
+
         </div>
 
     </div>
